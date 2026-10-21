@@ -50,8 +50,11 @@ $(obj)/preinit/runner.elf: $(KSU_KERNEL_DIR)/preinit/runner/runner.c \
 
 targets += preinit/runner.elf
 
+KSU_RUNNER_ELF_ABS := $(abspath $(obj)/preinit/runner.elf)
 $(obj)/preinit/blob.o: $(obj)/preinit/runner.elf
-AFLAGS_blob.o += -DKSU_PREINIT_RUNNER_BIN=\"$(obj)/preinit/runner.elf\"
+AFLAGS_blob.o += -DKSU_PREINIT_RUNNER_BIN=\"$(KSU_RUNNER_ELF_ABS)\"
+
+CFLAGS_preinit.o += -I$(KSU_KERNEL_DIR)/include
 
 else
 $(warning -- KernelSU: $(KSU_UAPI_INC) not found, preinit disabled)
