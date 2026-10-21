@@ -9,6 +9,8 @@
 #include <linux/string.h>
 #include <linux/uaccess.h>
 #include <linux/version.h>
+#include <linux/syscalls.h>
+#include <asm/ptrace.h> 
 
 #include "klog.h" // IWYU pragma: keep
 #include "util.h"
